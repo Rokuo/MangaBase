@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: manga-imdb-app
+    ports:
+      - "5173:5173"
+    volumes:
+      # Persist your SQLite DB outside the container
+      - ./data/manga.db:/app/src/lib/db/manga.db
+    environment:
+      - NODE_ENV=production
