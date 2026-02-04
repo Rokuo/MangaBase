@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:manga_base/screens/contact_groups.dart';
+import 'package:manga_base/screens/contacts.dart';
 
 import 'contact_groups.dart';
 
@@ -27,10 +30,36 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout> {
         final isLargeScreen = constraints.maxWidth > largeScreenMinWidth;
 
         if (isLargeScreen)
-          return const Text('Large screen layout');
+          return _buildLargeScreenLayout(); 
         else
           return const ContactGroupsPage();
       },
+    );
+  }
+
+  Widget _buildLargeScreenLayout() {
+    return CupertinoPageScaffold(
+      backgroundColor: CupertinoColors.extraLightBackgroundGray,
+      child:SafeArea(
+        child: Row(
+          children: [
+            SizedBox(
+              width: 320,
+              child: ContactGroupsSidebar(
+                selectedListId: selectedListId,
+                onListSelected: _onContactListSelected,
+              ),
+            ),
+            Container(
+              width: 1,
+              color: CupertinoColors.separator,
+            ),
+            Expanded(
+              child: ContactListDetail(listId: selectedListId),
+            ),
+          ],
+        ),
+      )
     );
   }
 }
