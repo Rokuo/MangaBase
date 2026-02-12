@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:manga_base/data/Book.dart';
+import 'package:manga_base/data/book.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class BookTile extends StatelessWidget {
-  BookTile({super.key, required this.book});
+  const BookTile({super.key, required this.book});
 
   final Book book;
 

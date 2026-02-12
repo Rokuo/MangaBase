@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:manga_base/main.dart';
-import 'Book.dart';
+import 'book.dart';
 
 class Books {
   Books({
