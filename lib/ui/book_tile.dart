@@ -9,14 +9,19 @@ class BookTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShadCard(
-      width: 300,
-      title: Text(book.title),
-      description: Text(book.description!),
-      child: Padding(
-        padding: EdgeInsetsGeometry.all(5),
-        child: ShadButton(),
-      ),
+    return SizedBox(
+      width: 170,
+      height: 200,
+      child: Image.network(book.coverUrl!)
     );
+    // return ShadCard(
+    //   width: 150,
+    //   title: Text(book.title),
+    //   description: Text(book.description!),
+    //   child: Padding(
+    //     padding: EdgeInsetsGeometry.all(5),
+    //     child: ShadButton(),
+    //   ),
+    // );
   }
 }
