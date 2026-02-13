@@ -13,11 +13,14 @@ class BookSectionList extends StatelessWidget {
       builder: (context, constraints) {
         return CustomScrollView(
            shrinkWrap: true,
-           scrollDirection: Axis.horizontal,
+           scrollDirection: Axis.vertical,
            slivers: [
             SliverList.builder(
               itemCount: sections.length,
-              itemBuilder: (context, index) => BookSection(title: sections[index].title, books: sections[index].books),
+              itemBuilder: (context, index) => SizedBox(
+                width: constraints.maxWidth,
+                child: BookSection(title: sections[index].title, books: sections[index].books),
+              )
             )
            ],
         );
