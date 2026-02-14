@@ -19,7 +19,17 @@ class MainApp extends StatelessWidget {
         brightness: Brightness.dark,
         colorScheme: const ShadSlateColorScheme.dark(),
       ),
-      builder: (context, child) => ShadAppBuilder(child: BookSectionList(sections: [Section(title: "section 1", books: mockBooks.take(10).toList()), Section(title: 'section 2', books: mockBooks.skip(10).take(10).toList())],)),
+      home: Scaffold(
+        body: Padding(
+          padding: EdgeInsetsGeometry.directional(top: 20),
+          child: BookSectionList(
+            sections: [
+              Section(title: "section 1", books: mockBooks.take(10).toList()),
+              Section(title: 'section 2', books: mockBooks.skip(10).take(10).toList())
+            ],
+          )
+        ),
+      ),
     );
   }
 }
