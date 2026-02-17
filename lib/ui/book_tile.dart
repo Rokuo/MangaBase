@@ -12,23 +12,29 @@ class BookTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Builder(builder:(ctx) => Padding(
       padding: EdgeInsetsGeometry.directional(start: 10, end: 10),
-      child: SizedBox(
-        // width: 150,
-        height: 200,
-        child: GestureDetector(
+      child: GestureDetector(
           onTap: () => showShadDialog(useRootNavigator: true, context: ctx, builder: (_) => BookModalView(book: book)),
-          child: Image.network(book.coverUrl!),
+          child: Column(
+            children: [
+              SizedBox(
+                width: 100,
+                height: 200,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(border: Border.all(width: 1, color: Colors.white)),
+                  child: Image.network(book.coverUrl!, ),
+                )
+              ),
+              SizedBox(
+                width: 100,
+                height: 30,
+                child: Align(
+                  alignment: AlignmentGeometry.topLeft,
+                  child: Text(book.title, overflow: TextOverflow.ellipsis),
+                ),
+              )
+            ],
+          )
         )
-      )  
     ));
-    // return ShadCard(
-    //   width: 150,
-    //   title: Text(book.title),
-    //   description: Text(book.description!),
-    //   child: Padding(
-    //     padding: EdgeInsetsGeometry.all(5),
-    //     child: ShadButton(),
-    //   ),
-    // );
   }
 }

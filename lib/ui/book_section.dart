@@ -11,7 +11,8 @@ class BookSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Padding(padding: EdgeInsetsGeometry.all(10),
+    return (Padding(
+      padding: EdgeInsetsGeometry.all(10),
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Column(
@@ -19,7 +20,7 @@ class BookSection extends StatelessWidget {
               Align(alignment: AlignmentGeometry.topLeft, child:Text(title, textAlign: TextAlign.left,)),
               Align(alignment: AlignmentGeometry.bottomLeft, child: SizedBox(
                 width: constraints.maxWidth,
-                height: 200,
+                height: 300,
                 child: BookGroup(books: books, scrollDirection: scrollDirection),
               ))
             ]

@@ -26,7 +26,13 @@ class BookModalView extends StatelessWidget {
               for (String subject in book.subjects)
                 ShadBadge.secondary(child: Text(subject)),
             ])),
-            Text(book.description!)
+            Text(book.description!),
+            Align(
+              alignment: AlignmentGeometry.bottomRight,
+              child: ShadButton(
+                child: Text('Add'),
+              ),
+            )
           ],
         ),
       )
