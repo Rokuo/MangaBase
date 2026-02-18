@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:manga_base/data/book.dart';
-import 'package:manga_base/ui/book_group.dart';
+import 'package:manga_base/ui/components/book_group.dart';
 
 class BookSection extends StatelessWidget {
   const BookSection({super.key, required this.title, required this.books, this.scrollDirection = Axis.horizontal});

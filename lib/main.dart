@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:manga_base/ui/home.dart';
-import 'package:manga_base/ui/search.dart';
-import 'package:manga_base/ui/library.dart';
+import 'package:manga_base/ui/screens/home.dart';
+import 'package:manga_base/ui/screens/search.dart';
+import 'package:manga_base/ui/screens/library.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:go_router/go_router.dart';
 
