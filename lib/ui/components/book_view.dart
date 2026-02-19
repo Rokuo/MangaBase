@@ -15,7 +15,7 @@ class BookModalView extends StatelessWidget {
         description: Text(book.authors.toString()),
         scrollable: true,
         alignment: Alignment.center,
-        radius: BorderRadius.all(Radius.elliptical(10, 100)),
+        radius: BorderRadius.all(Radius.circular(8)),
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 0),
         child: Column(
           children: [
