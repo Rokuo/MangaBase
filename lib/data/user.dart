@@ -1,16 +1,28 @@
+import 'package:hive_ce/hive_ce.dart';
 import 'package:manga_base/data/books.dart';
 import 'package:manga_base/data/rating.dart';
-import 'package:isar/isar.dart';
 
-@collection
-class User {
-  late int id;
+part 'user.g.dart';
+
+@HiveType(typeId: 0)
+class User extends HiveObject {
+  @HiveField(0)
+  int id;
+
+  @HiveField(1)
   String name;
-  List<Books> library = [];
-  List<Books> readingList = [];
-  List<Books> favorites = [];
-  List<Rating> ratings = [];
 
+  @HiveField(2)
+  List<Books> library;
 
-  User({required this.id, required this.name});
+  @HiveField(3)
+  List<Books> readingList;
+
+  @HiveField(4)
+  List<Books> favorites;
+
+  @HiveField(5)
+  List<Rating> ratings;
+
+  User({required this.id, required this.name, this.library = const [], this.readingList = const [], this.favorites = const [], this.ratings = const []});
 }

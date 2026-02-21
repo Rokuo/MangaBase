@@ -1,4 +1,4 @@
-import 'package:isar/isar.dart';
+import 'package:hive_ce/hive_ce.dart';
 import 'package:manga_base/data/user.dart';
 
 abstract class UserLocalRepository {
@@ -8,35 +8,29 @@ abstract class UserLocalRepository {
   Future<void> deleteUser(int id);
 }
 
-class IsarUserRepository implements UserLocalRepository {
-  final Isar isar;
+class HiveUserRepository implements UserLocalRepository {
+  final Box<User> userBox;
 
-  IsarUserRepository(this.isar);
+  HiveUserRepository(this.userBox);
 
   @override
   Future<void> addUser(User user) async {
-    // await isar.writeTxn(() async {
-    //   await isar.users.put(user);
-    // });
+    await userBox.put(user.id, user);
   }
 
   @override
   Future<User?> getUser(int id) async {
-    // return await isar.users.get(id);
+    return userBox.get(id);
   }
 
   @override
   Future<void> updateUser(User user) async {
-    // await isar.writeTxn(() async {
-    //   await isar.users.put(user);
-    // });
+    await userBox.put(user.id, user);
   }
 
   @override
   Future<void> deleteUser(int id) async {
-    // await isar.writeTxn(() async {
-    //   await isar.users.delete(id);
-    // });
+    await userBox.delete(id);
   }
 }
 
