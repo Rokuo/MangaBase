@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:manga_base/data/book.dart';
-import 'package:manga_base/ui/book_view.dart';
+import 'package:manga_base/ui/components/book_view.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class BookTile extends StatelessWidget {

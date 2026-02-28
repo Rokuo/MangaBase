@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:manga_base/data/book.dart';
-import 'package:manga_base/ui/book_tile.dart';
+import 'package:manga_base/ui/components/book_tile.dart';
 
 class BookGroup extends StatelessWidget {
   const BookGroup({super.key, required this.books, this.scrollDirection = Axis.vertical});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:manga_base/data/section.dart';
-import 'package:manga_base/ui/book_section_list.dart';
+import 'package:manga_base/ui/components/book_section_list.dart';
 import 'package:manga_base/data/book.dart';
 
 class HomePage extends StatelessWidget {

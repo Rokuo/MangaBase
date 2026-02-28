@@ -1,5 +1,10 @@
-class Book {
-  const Book({
+import 'package:hive_ce/hive_ce.dart';
+
+part 'book.g.dart';
+
+@HiveType(typeId: 1)
+class Book extends HiveObject {
+  Book({
     required this.id,
     required this.title,
     required this.authors,
@@ -10,14 +15,22 @@ class Book {
     this.pageCount,
   });
 
-  final String id;
-  final String title;
-  final List<String> authors;
-  final String? description;
-  final String? coverUrl;
-  final int? firstPublishYear;
-  final List<String> subjects;
-  final int? pageCount;
+  @HiveField(0)
+  int id;
+  @HiveField(1)
+  String title;
+  @HiveField(2)
+  List<String> authors;
+  @HiveField(3)
+  String? description;
+  @HiveField(4)
+  String? coverUrl;
+  @HiveField(5)
+  int? firstPublishYear;
+  @HiveField(6)
+  List<String> subjects;
+  @HiveField(7)
+  int? pageCount;
 
   factory Book.fromJson(Map<String, dynamic> json) {
     return Book(
@@ -55,7 +68,7 @@ class Book {
 // mock data 
 final List<Book> mockBooks = [
   Book(
-    id: 'OL1',
+    id: 0,
     title: '1984',
     authors: ['George Orwell'],
     description:
@@ -67,7 +80,7 @@ final List<Book> mockBooks = [
     pageCount: 328,
   ),
   Book(
-    id: 'OL2',
+    id: 1,
     title: 'Brave New World',
     authors: ['Aldous Huxley'],
     description:
@@ -79,7 +92,7 @@ final List<Book> mockBooks = [
     pageCount: 288,
   ),
   Book(
-    id: 'OL3',
+    id: 2,
     title: 'Fahrenheit 451',
     authors: ['Ray Bradbury'],
     description:
@@ -91,7 +104,7 @@ final List<Book> mockBooks = [
     pageCount: 194,
   ),
   Book(
-    id: 'OL4',
+    id: 3,
     title: 'The Hobbit',
     authors: ['J.R.R. Tolkien'],
     description:
@@ -103,7 +116,7 @@ final List<Book> mockBooks = [
     pageCount: 310,
   ),
   Book(
-    id: 'OL5',
+    id: 4,
     title: 'The Lord of the Rings',
     authors: ['J.R.R. Tolkien'],
     description:
@@ -115,7 +128,7 @@ final List<Book> mockBooks = [
     pageCount: 1178,
   ),
   Book(
-    id: 'OL6',
+    id: 6,
     title: 'To Kill a Mockingbird',
     authors: ['Harper Lee'],
     description:
@@ -127,7 +140,7 @@ final List<Book> mockBooks = [
     pageCount: 281,
   ),
   Book(
-    id: 'OL7',
+    id: 5,
     title: 'The Catcher in the Rye',
     authors: ['J.D. Salinger'],
     description:
@@ -139,7 +152,7 @@ final List<Book> mockBooks = [
     pageCount: 214,
   ),
   Book(
-    id: 'OL8',
+    id: 7,
     title: 'Moby-Dick',
     authors: ['Herman Melville'],
     description:
@@ -151,7 +164,7 @@ final List<Book> mockBooks = [
     pageCount: 635,
   ),
   Book(
-    id: 'OL9',
+    id: 8,
     title: 'Pride and Prejudice',
     authors: ['Jane Austen'],
     description:
@@ -163,7 +176,7 @@ final List<Book> mockBooks = [
     pageCount: 279,
   ),
   Book(
-    id: 'OL10',
+    id: 9,
     title: 'The Great Gatsby',
     authors: ['F. Scott Fitzgerald'],
     description:
@@ -175,7 +188,7 @@ final List<Book> mockBooks = [
     pageCount: 180,
   ),
   Book(
-    id: 'OL11',
+    id: 10,
     title: 'Crime and Punishment',
     authors: ['Fyodor Dostoevsky'],
     description:
@@ -187,7 +200,7 @@ final List<Book> mockBooks = [
     pageCount: 671,
   ),
   Book(
-    id: 'OL12',
+    id: 11,
     title: 'The Alchemist',
     authors: ['Paulo Coelho'],
     description:
@@ -199,7 +212,7 @@ final List<Book> mockBooks = [
     pageCount: 208,
   ),
   Book(
-    id: 'OL13',
+    id: 12,
     title: 'Dune',
     authors: ['Frank Herbert'],
     description:
@@ -211,7 +224,7 @@ final List<Book> mockBooks = [
     pageCount: 412,
   ),
   Book(
-    id: 'OL14',
+    id: 13,
     title: 'The Name of the Wind',
     authors: ['Patrick Rothfuss'],
     description:
@@ -223,7 +236,7 @@ final List<Book> mockBooks = [
     pageCount: 662,
   ),
   Book(
-    id: 'OL15',
+    id: 14,
     title: 'Harry Potter and the Philosopher’s Stone',
     authors: ['J.K. Rowling'],
     description:
@@ -235,7 +248,7 @@ final List<Book> mockBooks = [
     pageCount: 223,
   ),
   Book(
-    id: 'OL16',
+    id: 15,
     title: 'The Martian',
     authors: ['Andy Weir'],
     description:
@@ -247,7 +260,7 @@ final List<Book> mockBooks = [
     pageCount: 369,
   ),
   Book(
-    id: 'OL17',
+    id: 16,
     title: 'Sapiens',
     authors: ['Yuval Noah Harari'],
     description:
@@ -259,7 +272,7 @@ final List<Book> mockBooks = [
     pageCount: 443,
   ),
   Book(
-    id: 'OL18',
+    id: 17,
     title: 'Atomic Habits',
     authors: ['James Clear'],
     description:
@@ -271,7 +284,7 @@ final List<Book> mockBooks = [
     pageCount: 320,
   ),
   Book(
-    id: 'OL19',
+    id: 18,
     title: 'The Pragmatic Programmer',
     authors: ['Andrew Hunt', 'David Thomas'],
     description:
@@ -283,7 +296,7 @@ final List<Book> mockBooks = [
     pageCount: 352,
   ),
   Book(
-    id: 'OL20',
+    id: 19,
     title: 'Clean Code',
     authors: ['Robert C. Martin'],
     description:
