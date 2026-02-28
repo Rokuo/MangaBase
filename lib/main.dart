@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:manga_base/data/book.dart';
 import 'package:manga_base/ui/screens/home.dart';
 import 'package:manga_base/ui/screens/search.dart';
 import 'package:manga_base/ui/screens/library.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive_ce/hive_ce.dart';
 import 'package:manga_base/data/user.dart';
 import 'package:hive_ce_flutter/hive_ce_flutter.dart';
 
@@ -57,6 +57,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(UserAdapter());
+  Hive.registerAdapter(BookAdapter());
   // TODO: Register Books and Rating adapters if needed
   await Hive.openBox<User>('users');
   runApp(const ProviderScope(child: MainApp()));

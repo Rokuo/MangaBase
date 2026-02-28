@@ -1,53 +1,55 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'book.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<User> {
+class BookAdapter extends TypeAdapter<Book> {
   @override
-  final typeId = 0;
+  final typeId = 1;
 
   @override
-  User read(BinaryReader reader) {
+  Book read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return User(
+    return Book(
       id: (fields[0] as num).toInt(),
-      name: fields[1] as String,
-      library: fields[2] == null ? const [] : (fields[2] as List).cast<Book>(),
-      readingList: fields[3] == null
+      title: fields[1] as String,
+      authors: (fields[2] as List).cast<String>(),
+      description: fields[3] as String?,
+      coverUrl: fields[4] as String?,
+      firstPublishYear: (fields[5] as num?)?.toInt(),
+      subjects: fields[6] == null
           ? const []
-          : (fields[3] as List).cast<Book>(),
-      favorites: fields[4] == null
-          ? const []
-          : (fields[4] as List).cast<Book>(),
-      ratings: fields[5] == null
-          ? const []
-          : (fields[5] as List).cast<Rating>(),
+          : (fields[6] as List).cast<String>(),
+      pageCount: (fields[7] as num?)?.toInt(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, User obj) {
+  void write(BinaryWriter writer, Book obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.name)
+      ..write(obj.title)
       ..writeByte(2)
-      ..write(obj.library)
+      ..write(obj.authors)
       ..writeByte(3)
-      ..write(obj.readingList)
+      ..write(obj.description)
       ..writeByte(4)
-      ..write(obj.favorites)
+      ..write(obj.coverUrl)
       ..writeByte(5)
-      ..write(obj.ratings);
+      ..write(obj.firstPublishYear)
+      ..writeByte(6)
+      ..write(obj.subjects)
+      ..writeByte(7)
+      ..write(obj.pageCount);
   }
 
   @override
@@ -56,7 +58,7 @@ class UserAdapter extends TypeAdapter<User> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserAdapter &&
+      other is BookAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

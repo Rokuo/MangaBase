@@ -1,5 +1,5 @@
 import 'package:hive_ce/hive_ce.dart';
-import 'package:manga_base/data/books.dart';
+import 'package:manga_base/data/book.dart';
 import 'package:manga_base/data/rating.dart';
 
 part 'user.g.dart';
@@ -13,13 +13,13 @@ class User extends HiveObject {
   String name;
 
   @HiveField(2)
-  List<Books> library;
+  List<Book> library;
 
   @HiveField(3)
-  List<Books> readingList;
+  List<Book> readingList;
 
   @HiveField(4)
-  List<Books> favorites;
+  List<Book> favorites;
 
   @HiveField(5)
   List<Rating> ratings;

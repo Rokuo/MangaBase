@@ -11,3 +11,8 @@ final userRepositoryProvider = Provider<UserLocalRepository>((ref) {
   final userBox = ref.watch(userBoxProvider);
   return HiveUserRepository(userBox);
 });
+
+final userFutureProvider = FutureProvider.autoDispose<User?>((ref) {
+  final userRepo = ref.watch(userRepositoryProvider);
+  return userRepo.getUser(1);
+});
