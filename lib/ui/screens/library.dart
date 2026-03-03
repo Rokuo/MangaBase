@@ -7,12 +7,6 @@ import 'package:manga_base/data/providers/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:manga_base/ui/components/book_section.dart';
 
-// FutureProvider for the user
-// final userFutureProvider = FutureProvider.autoDispose<User?>((ref) {
-//   final userRepo = ref.watch(userRepositoryProvider);
-//   return userRepo.getUser(1);
-// });
-
 class LibraryPage extends ConsumerWidget {
   const LibraryPage({super.key});
 
@@ -28,22 +22,28 @@ class LibraryPage extends ConsumerWidget {
             ? const Center(child: Text('local user not found'))
             : ListView(
                 children: [
-                  BookSection(title: 'Reading List ${user.readingList.length}', books: user.readingList),
-                  BookSection(title: 'Favorites ${user.favorites.length}', books: user.favorites),
-                  BookSection(title: 'Library ${user.library.length}', books: user.library),
+                  BookSection(title: 'Reading List ${user.readingList.length}', books: []),
+                  BookSection(title: 'Favorites ${user.favorites.length}', books: []),
+                  BookSection(title: 'Library ${user.bookEntries.length}', books: []),
                 ],
               ),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, st) => Center(child: Text('Error: $e')),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final newUser = User(id: 1, name: 'local user', library: mockBooks.skip(3).take(6).toList(), readingList: [], favorites: [], ratings: []);
-          await userRepo.addUser(newUser);
-          ref.invalidate(userFutureProvider); // Invalidate the FutureProvider to refresh UI
-        },
-        child: const Icon(Icons.add),
-        tooltip: 'Add User',
+      floatingActionButton: userAsync.when(
+        data: (user) => user == null
+            ? null
+            : FloatingActionButton(
+              onPressed: () async {
+                final newUser = User(id: 1, name: 'local user');
+                await userRepo.addUser(newUser);
+                ref.invalidate(userFutureProvider);
+              },
+              child: const Icon(Icons.add),
+              tooltip: 'Add User',
+            ),
+        loading: () => null,
+        error: (e, st) => null,
       ),
     );
   }

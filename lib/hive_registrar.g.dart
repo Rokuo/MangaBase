@@ -3,19 +3,22 @@
 // Check in to version control
 
 import 'package:hive_ce/hive_ce.dart';
-import 'package:manga_base/data/book.dart';
-import 'package:manga_base/data/user.dart';
+import 'package:manga_base/data/dtos/book_progression.dart';
+import 'package:manga_base/data/dtos/user.dart';
+import 'package:manga_base/data/dtos/user_book_entry.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
-    registerAdapter(BookAdapter());
+    registerAdapter(BookProgressionAdapter());
     registerAdapter(UserAdapter());
+    registerAdapter(UserBookEntryAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
-    registerAdapter(BookAdapter());
+    registerAdapter(BookProgressionAdapter());
     registerAdapter(UserAdapter());
+    registerAdapter(UserBookEntryAdapter());
   }
 }

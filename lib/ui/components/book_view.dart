@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:manga_base/data/book.dart';
+import 'package:manga_base/data/dtos/book.dart';
 import 'package:manga_base/data/providers/user_provider.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:manga_base/data/user.dart';
+import 'package:manga_base/data/dtos/user.dart';
 
 class BookModalView extends ConsumerWidget {
   const BookModalView({super.key, required this.book});

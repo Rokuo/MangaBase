@@ -19,35 +19,22 @@ class UserAdapter extends TypeAdapter<User> {
     return User(
       id: (fields[0] as num).toInt(),
       name: fields[1] as String,
-      library: fields[2] == null ? const [] : (fields[2] as List).cast<Book>(),
-      readingList: fields[3] == null
-          ? const []
-          : (fields[3] as List).cast<Book>(),
-      favorites: fields[4] == null
-          ? const []
-          : (fields[4] as List).cast<Book>(),
-      ratings: fields[5] == null
-          ? const []
-          : (fields[5] as List).cast<Rating>(),
+      bookEntries: fields[2] == null
+          ? const {}
+          : (fields[2] as Set).cast<UserBookEntry>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, User obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.library)
-      ..writeByte(3)
-      ..write(obj.readingList)
-      ..writeByte(4)
-      ..write(obj.favorites)
-      ..writeByte(5)
-      ..write(obj.ratings);
+      ..write(obj.bookEntries);
   }
 
   @override

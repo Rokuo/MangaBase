@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:manga_base/data/book.dart';
+import 'package:manga_base/data/dtos/book.dart';
+import 'package:manga_base/data/dtos/book_progression.dart';
+import 'package:manga_base/data/dtos/user_book_entry.dart';
 import 'package:manga_base/ui/screens/home.dart';
 import 'package:manga_base/ui/screens/search.dart';
 import 'package:manga_base/ui/screens/library.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:manga_base/data/user.dart';
+import 'package:manga_base/data/dtos/user.dart';
 import 'package:hive_ce_flutter/hive_ce_flutter.dart';
 
 final router = GoRouter(
@@ -57,8 +59,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(UserAdapter());
-  Hive.registerAdapter(BookAdapter());
-  // TODO: Register Books and Rating adapters if needed
+  Hive.registerAdapter(BookProgressionAdapter());
+  Hive.registerAdapter(UserBookEntryAdapter());
   await Hive.openBox<User>('users');
   runApp(const ProviderScope(child: MainApp()));
 }

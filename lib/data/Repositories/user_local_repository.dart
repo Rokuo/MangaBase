@@ -1,5 +1,5 @@
 import 'package:hive_ce/hive_ce.dart';
-import 'package:manga_base/data/user.dart';
+import 'package:manga_base/data/dtos/user.dart';
 
 abstract class UserLocalRepository {
   Future<void> addUser(User user);
